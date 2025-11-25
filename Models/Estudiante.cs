@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ksalazarS6Online.Models
 {
-    internal class Estudiante
+    public class Estudiante
     {
 
         public int codigo { get; set; }

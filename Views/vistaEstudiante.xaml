@@ -23,37 +23,40 @@
             </Grid>
         </Border>
 
-        <!-- 🔹 Contenido (tabla) -->
-        <CollectionView x:Name="listaEstudiantes"
-                        SelectionMode="None">
+        <!-- 🔹 ListView con filas tipo tabla -->
+        <ListView x:Name="listaEstudiantes"
+                  HasUnevenRows="True"
+                  ItemSelected="listaEstudiantes_ItemSelected"
+                  SeparatorVisibility="None">
 
-            <CollectionView.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate>
 
-                    <!-- Cada fila con borde -->
-                    <Border Stroke="Black" StrokeThickness="0.5">
-                        <Grid ColumnDefinitions="*,*,*,*" Padding="5">
+                    <ViewCell>
+                        <Border Stroke="Black" StrokeThickness="0.5">
+                            <Grid ColumnDefinitions="*,*,*,*" Padding="5">
 
-                            <!-- Fila alternada -->
-                            <Grid.Triggers>
-                                <DataTrigger TargetType="Grid"
-                                             Binding="{Binding AlternarColor}"
-                                             Value="true">
-                                    <Setter Property="BackgroundColor" Value="#F7F7F7"/>
-                                </DataTrigger>
-                            </Grid.Triggers>
+                                <Label Text="{Binding codigo}" />
+                                <Label Grid.Column="1" Text="{Binding nombre}" />
+                                <Label Grid.Column="2" Text="{Binding apellido}" />
+                                <Label Grid.Column="3" Text="{Binding edad}" />
 
-                            <Label Text="{Binding codigo}" />
-                            <Label Text="{Binding nombre}" Grid.Column="1" />
-                            <Label Text="{Binding apellido}" Grid.Column="2" />
-                            <Label Text="{Binding edad}" Grid.Column="3" />
-
-                        </Grid>
-                    </Border>
+                            </Grid>
+                        </Border>
+                    </ViewCell>
 
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+        <!-- 🔹 Botón para agregar estudiante -->
+        <Button Text="Agregar Estudiante"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                CornerRadius="10"
+                Padding="10"
+                Clicked="btnAgregar_Clicked"/>
 
     </VerticalStackLayout>
 
