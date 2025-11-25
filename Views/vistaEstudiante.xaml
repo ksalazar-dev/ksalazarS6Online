@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ksalazarS6Online.Views.vistaEstudiante"
+             Title="vistaEstudiante">
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label Text="SEMANA 6: SERVICIOS WEB"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               FontSize="20" />
+
+        <!-- 🔹 Encabezado -->
+        <Border Stroke="Black" StrokeThickness="1" BackgroundColor="#E0E0E0" Padding="5">
+            <Grid ColumnDefinitions="*,*,*,*">
+
+                <Label Text="Código" FontAttributes="Bold" />
+                <Label Text="Nombre" Grid.Column="1" FontAttributes="Bold" />
+                <Label Text="Apellido" Grid.Column="2" FontAttributes="Bold" />
+                <Label Text="Edad" Grid.Column="3" FontAttributes="Bold" />
+
+            </Grid>
+        </Border>
+
+        <!-- 🔹 Contenido (tabla) -->
+        <CollectionView x:Name="listaEstudiantes"
+                        SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <!-- Cada fila con borde -->
+                    <Border Stroke="Black" StrokeThickness="0.5">
+                        <Grid ColumnDefinitions="*,*,*,*" Padding="5">
+
+                            <!-- Fila alternada -->
+                            <Grid.Triggers>
+                                <DataTrigger TargetType="Grid"
+                                             Binding="{Binding AlternarColor}"
+                                             Value="true">
+                                    <Setter Property="BackgroundColor" Value="#F7F7F7"/>
+                                </DataTrigger>
+                            </Grid.Triggers>
+
+                            <Label Text="{Binding codigo}" />
+                            <Label Text="{Binding nombre}" Grid.Column="1" />
+                            <Label Text="{Binding apellido}" Grid.Column="2" />
+                            <Label Text="{Binding edad}" Grid.Column="3" />
+
+                        </Grid>
+                    </Border>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>
